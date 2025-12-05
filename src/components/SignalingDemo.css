@@ -134,6 +134,10 @@
   border-color: #48bb78;
 }
 
+.sdp-box.ice-candidates {
+  border-color: #9f7aea;
+}
+
 .sdp-box strong {
   color: #667eea;
   display: block;
@@ -142,6 +146,10 @@
 
 .sdp-box.answer strong {
   color: #48bb78;
+}
+
+.sdp-box.ice-candidates strong {
+  color: #9f7aea;
 }
 
 .sdp-box pre {
@@ -187,10 +195,15 @@
 /* Answer flow: Server → A */
 .arrow-server-to-a {
   top: 65%;
-  left: 35%;
+  left: 30%;
   color: #48bb78;
-  transform: scaleX(1);
+  transform: scaleX(-1);
   transform-origin: left center;
+}
+
+/* ICE Candidates flow - same paths but purple color */
+.arrow.ice {
+  color: #9f7aea;
 }
 
 .info-panel {

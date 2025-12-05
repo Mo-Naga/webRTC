@@ -13,7 +13,8 @@ const SignalingDemo = () => {
     { id: 2, title: 'Send Offer', desc: 'Offer sent via signaling server' },
     { id: 3, title: 'Create Answer', desc: 'Peer B creates SDP Answer' },
     { id: 4, title: 'Send Answer', desc: 'Answer sent back to Peer A' },
-    { id: 5, title: 'Exchange Complete', desc: 'Both peers have connection metadata' }
+    { id: 5, title: 'Exchange ICE Candidates', desc: 'Peers exchange ICE candidates via server' },
+    { id: 6, title: 'Complete', desc: 'SDP + ICE candidates ready for connection' }
   ]
 
   const handleNext = () => {
@@ -104,7 +105,7 @@ a=rtpmap:111 opus/48000/2`}</pre>
               </div>
             </motion.div>
           )} */}
-          {step >= 4 && (
+          {step >= 4 && step < 5 && (
             <motion.div
               className="sdp-box answer"
               initial={{ scale: 0 }}
@@ -124,6 +125,21 @@ a=rtpmap:111 opus/48000/2`}</pre>
               </div>
             </motion.div>
           )}
+          {step >= 5 && (
+            <motion.div
+              className="sdp-box ice-candidates"
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+            >
+              <FileText size={20} />
+              <div>
+                <strong>ICE Candidates</strong>
+                <pre>{`candidate:1 1 UDP 2113937151 10.0.0.12 54321
+candidate:2 1 UDP 1845501695 203.0.113.5 60012
+candidate:3 1 UDP 16777215 turn.example.com 45000`}</pre>
+              </div>
+            </motion.div>
+          )}
         </div>
 
         {/* Signaling Server */}
@@ -132,7 +148,7 @@ a=rtpmap:111 opus/48000/2`}</pre>
           <h3>Signaling Server</h3>
           <p>(WebSocket / HTTP)</p>
           
-          {step >= 2 && step < 4 && (
+          {step >= 2 && step < 3 && (
             <motion.div
               className="message-badge"
               initial={{ scale: 0 }}
@@ -143,7 +159,7 @@ a=rtpmap:111 opus/48000/2`}</pre>
             </motion.div>
           )}
           
-          {step >= 4 && (
+          {step >= 4 &&step<5 && (
             <motion.div
               className="message-badge answer"
               initial={{ scale: 0 }}
@@ -200,6 +216,21 @@ a=rtpmap:111 opus/48000/2`}</pre>
               </div>
             </motion.div>
           )}
+          {step >= 5 && (
+            <motion.div
+              className="sdp-box ice-candidates"
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+            >
+              <FileText size={20} />
+              <div>
+                <strong>ICE Candidates</strong>
+                <pre>{`candidate:1 1 UDP 2113937151 10.0.0.12 54321
+candidate:2 1 UDP 1845501695 203.0.113.5 60012
+candidate:3 1 UDP 16777215 turn.example.com 45000`}</pre>
+              </div>
+            </motion.div>
+          )}
         </div>
 
         {/* Animated arrows - Offer: A → Server → B */}
@@ -225,7 +256,7 @@ a=rtpmap:111 opus/48000/2`}</pre>
         )}
 
         {/* Animated arrows - Answer: B → Server → A */}
-        {step >= 4 && (
+        {step >= 4 && step < 5 && (
           <>
             <motion.div
               className="arrow arrow-b-to-server"
@@ -240,6 +271,44 @@ a=rtpmap:111 opus/48000/2`}</pre>
               initial={{ opacity: 0, scaleX: 0 }}
               animate={{ opacity: 1, scaleX: -1 }}
               transition={{ duration: 0.6, delay: 0.3 }}
+            >
+              <ArrowRight size={32} />
+            </motion.div>
+          </>
+        )}
+
+        {/* ICE Candidates Exchange: A ↔ Server ↔ B */}
+        {step >= 5 && (
+          <>
+            <motion.div
+              className="arrow arrow-a-to-server ice"
+              initial={{ opacity: 0, scaleX: 0 }}
+              animate={{ opacity: 1, scaleX: 1 }}
+              transition={{ duration: 0.6 }}
+            >
+              <ArrowRight size={32} />
+            </motion.div>
+            <motion.div
+              className="arrow arrow-server-to-b ice"
+              initial={{ opacity: 0, scaleX: 0 }}
+              animate={{ opacity: 1, scaleX: 1 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            >
+              <ArrowRight size={32} />
+            </motion.div>
+            <motion.div
+              className="arrow arrow-b-to-server ice"
+              initial={{ opacity: 0, scaleX: 0 }}
+              animate={{ opacity: 1, scaleX: -1 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+            >
+              <ArrowRight size={32} />
+            </motion.div>
+            <motion.div
+              className="arrow arrow-server-to-a ice"
+              initial={{ opacity: 0, scaleX: 0 }}
+              animate={{ opacity: 1, scaleX: -1 }}
+              transition={{ duration: 0.6, delay: 0.9 }}
             >
               <ArrowRight size={32} />
             </motion.div>

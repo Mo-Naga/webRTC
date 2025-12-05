@@ -95,9 +95,9 @@ const ICEDemo = () => {
         <div className="checks">
           <h3>Connectivity Checks</h3>
           <div className="pairs">
-            <div className={`pair ${phase >= 4 ? 'nominated' : ''}`}>Reflexive ↔ Reflexive</div>
+            <div className={`pair ${phase >= 4 ? '' : ''}`}>Reflexive ↔ Reflexive</div>
             <div className={`pair ${phase >= 4 ? '' : ''}`}>Host ↔ Host</div>
-            <div className={`pair ${phase >= 4 ? '' : ''}`}>Relay ↔ Relay</div>
+            <div className={`pair ${phase >= 4 ? 'nominated' : ''}`}>Relay ↔ Relay</div>
           </div>
         </div>
       )}
