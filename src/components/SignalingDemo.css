@@ -1,11 +1,11 @@
 .signaling-demo h2 {
-  color: #667eea;
+  color: #64b5f6;
   margin-bottom: 0.5rem;
   font-size: 1.8rem;
 }
 
 .demo-description {
-  color: #666;
+  color: #b0bec5;
   margin-bottom: 1.5rem;
   line-height: 1.6;
 }
@@ -16,33 +16,35 @@
   align-items: center;
   margin-bottom: 2rem;
   padding: 1rem;
-  background: #f8f9fa;
+  background: #37474f;
   border-radius: 8px;
 }
 
 .demo-controls button {
   padding: 0.6rem 1.5rem;
   border: none;
-  background: #667eea;
-  color: white;
+  background: #64b5f6;
+  color: #1a1a2e;
   border-radius: 6px;
   font-weight: 600;
   transition: all 0.3s;
 }
 
 .demo-controls button:hover:not(:disabled) {
-  background: #5568d3;
+  background: #42a5f5;
   transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(100, 181, 246, 0.3);
 }
 
 .demo-controls button:disabled {
-  background: #ccc;
+  background: #555;
+  color: #999;
 }
 
 .step-indicator {
   margin-left: auto;
   font-weight: 600;
-  color: #667eea;
+  color: #64b5f6;
 }
 
 .visualization-area {
@@ -52,7 +54,7 @@
   gap: 2rem;
   margin: 2rem 0;
   padding: 2rem;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  background: linear-gradient(135deg, #37474f 0%, #263238 100%);
   border-radius: 12px;
   min-height: 400px;
 }
@@ -70,7 +72,7 @@
 }
 
 .peer h3 {
-  color: #333;
+  color: #e0e0e0;
   margin-bottom: 1rem;
   font-size: 1.1rem;
 }
@@ -89,12 +91,12 @@
 }
 
 .signaling-server h3 {
-  color: #333;
+  color: #e0e0e0;
   margin-bottom: 0.5rem;
 }
 
 .signaling-server p {
-  color: #666;
+  color: #90a4ae;
   font-size: 0.9rem;
 }
 
@@ -103,68 +105,69 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: #667eea;
-  color: white;
+  background: #64b5f6;
+  color: #1a1a2e;
   padding: 0.5rem 1rem;
   border-radius: 20px;
   display: flex;
   align-items: center;
   gap: 0.5rem;
   font-weight: 600;
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 4px 12px rgba(100, 181, 246, 0.5);
 }
 
 .message-badge.answer {
-  background: #48bb78;
-  box-shadow: 0 4px 12px rgba(72, 187, 120, 0.4);
+  background: #4db6ac;
+  box-shadow: 0 4px 12px rgba(77, 182, 172, 0.5);
 }
 
 .sdp-box {
-  background: white;
-  border: 2px solid #667eea;
+  background: #37474f;
+  border: 2px solid #64b5f6;
   border-radius: 8px;
   padding: 1rem;
   margin-top: 1rem;
   text-align: left;
   max-width: 280px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  color: #e0e0e0;
 }
 
 .sdp-box.answer {
-  border-color: #48bb78;
+  border-color: #4db6ac;
 }
 
 .sdp-box.ice-candidates {
-  border-color: #9f7aea;
+  border-color: #ce93d8;
 }
 
 .sdp-box strong {
-  color: #667eea;
+  color: #64b5f6;
   display: block;
   margin-bottom: 0.5rem;
 }
 
 .sdp-box.answer strong {
-  color: #48bb78;
+  color: #4db6ac;
 }
 
 .sdp-box.ice-candidates strong {
-  color: #9f7aea;
+  color: #ce93d8;
 }
 
 .sdp-box pre {
   font-size: 0.7rem;
-  background: #f8f9fa;
+  background: #263238;
   padding: 0.5rem;
   border-radius: 4px;
   overflow-x: auto;
-  color: #333;
+  color: #aed581;
   line-height: 1.3;
 }
 
 .arrow {
   position: absolute;
-  color: #667eea;
+  color: #64b5f6;
   z-index: 10;
   transform-origin: left center;
 }
@@ -173,21 +176,21 @@
 .arrow-a-to-server {
   top: 25%;
   left: 30%;
-  color: #667eea;
+  color: #64b5f6;
 }
 
 /* Offer flow: Server → B */
 .arrow-server-to-b {
   top: 25%;
   right: 30%;
-  color: #667eea;
+  color: #64b5f6;
 }
 
 /* Answer flow: B → Server */
 .arrow-b-to-server {
   top: 65%;
   right: 27%;
-  color: #48bb78;
+  color: #4db6ac;
   transform: scaleX(1);
   transform-origin: left center;
 }
@@ -196,9 +199,14 @@
 .arrow-server-to-a {
   top: 65%;
   left: 30%;
-  color: #48bb78;
+  color: #4db6ac;
   transform: scaleX(-1);
   transform-origin: left center;
+}
+
+/* ICE Candidates flow */
+.arrow.ice {
+  color: #ce93d8;
 }
 
 /* ICE Candidates flow - same paths but purple color */
@@ -207,15 +215,16 @@
 }
 
 .info-panel {
-  background: #f8f9fa;
-  border-left: 4px solid #667eea;
+  background: #37474f;
+  border-left: 4px solid #64b5f6;
   padding: 1.5rem;
   border-radius: 8px;
   margin-top: 2rem;
+  color: #e0e0e0;
 }
 
 .info-panel h3 {
-  color: #667eea;
+  color: #64b5f6;
   margin-bottom: 1rem;
   font-size: 1.2rem;
 }
@@ -228,7 +237,7 @@
   margin-bottom: 0.8rem;
   padding-left: 1.5rem;
   position: relative;
-  color: #444;
+  color: #b0bec5;
   line-height: 1.5;
 }
 
@@ -236,12 +245,12 @@
   content: "→";
   position: absolute;
   left: 0;
-  color: #667eea;
+  color: #64b5f6;
   font-weight: bold;
 }
 
 .info-panel strong {
-  color: #333;
+  color: #e0e0e0;
 }
 
 @media (max-width: 968px) {

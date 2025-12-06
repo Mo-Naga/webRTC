@@ -45,14 +45,14 @@ const ICEDemo = () => {
           <div className="stun">
             <div className="icon">❄️</div>
             <h4>STUN Server</h4>
-            {phase >= 1 && (
-              <motion.div className="badge" initial={{ scale: 0 }} animate={{ scale: 1 }}>Binding Requests</motion.div>
+            {phase >= 1 && phase < 2 && (
+              <motion.div className="badge" initial={{ scale: 0 }} animate={{ scale: 1 }}>Request: What is my public IP?</motion.div>
             )}
           </div>
           <div className="turn">
             <div className="icon">🔁</div>
             <h4>TURN Server</h4>
-            {phase >= 2 && (
+            {phase >= 2 && phase < 3 && (
               <motion.div className="badge turn" initial={{ scale: 0 }} animate={{ scale: 1 }}>Relay Allocation</motion.div>
             )}
           </div>
@@ -95,9 +95,9 @@ const ICEDemo = () => {
         <div className="checks">
           <h3>Connectivity Checks</h3>
           <div className="pairs">
-            <div className={`pair ${phase >= 4 ? '' : ''}`}>Reflexive ↔ Reflexive</div>
+            <div className={`pair ${phase >= 4 ? 'nominated' : ''}`}>Reflexive ↔ Reflexive</div>
             <div className={`pair ${phase >= 4 ? '' : ''}`}>Host ↔ Host</div>
-            <div className={`pair ${phase >= 4 ? 'nominated' : ''}`}>Relay ↔ Relay</div>
+            <div className={`pair ${phase >= 4 ? '' : ''}`}>Relay ↔ Relay</div>
           </div>
         </div>
       )}
